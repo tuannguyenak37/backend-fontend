@@ -1,0 +1,43 @@
+.heart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.heart-grid {
+  display: grid;
+  grid-template-columns: repeat(13, 24px);
+  gap: 15px;
+}
+
+.heart-cell {
+  width: 24px;
+  height: 24px;
+  text-align: center;
+}
+
+.heart {
+  display: inline-block;
+  cursor: pointer;
+  color: rgb(188, 43, 43);
+  font-size: 40px;
+  transition: transform 0.1s ease, color 0.1s ease;
+}
+
+.heart:hover {
+  color: #ff6f91;
+  transform: scale(1.95);
+}
+.back-love {
+  background-color: #ff6f91;
+  font-size: 2rem;
+  border-radius: 20px;
+}
+.img-iconlove {
+  max-width: 400px;
+  margin-top: 200px;
+}
+.text {
+  color: rgb(65, 45, 181);
+}

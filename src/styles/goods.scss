@@ -1,0 +1,65 @@
+.goods-img {
+  display: block;
+  width: 20em;
+  height: 15em;
+  border-radius: 2rem;
+  object-fit: cover;
+}
+
+.goods-img:hover {
+  transform: scale(1.05) rotate(2deg); /* phóng to + xoay nhẹ */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* đổ bóng */
+  filter: brightness(1.1); /* làm ảnh sáng hơn */
+  opacity: 0.95;
+}
+.px {
+  padding: 13rem;
+  padding-bottom: 1rem;
+}
+.a {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+.goods-items {
+  font-size: 2rem;
+  color: #dc3545;
+  font-family: "love";
+
+  font-style: italic;
+}
+.goods-items:hover {
+  color: #ff6b6b; /* đổi màu khi hover */
+  text-decoration: underline; /* gạch chân khi hover */
+}
+.goods-items:active {
+  color: #ff6b6b; /* đổi màu khi click */
+  transform: scale(0.95); /* thu nhỏ khi click */
+  transition: transform 0.1s ease; /* hiệu ứng thu nhỏ */
+}
+
+.goods-price {
+  font-size: 2rem;
+  color: #030303;
+  font-family: "love";
+}
+
+.fly-img {
+  position: absolute;
+  z-index: 999;
+  width: 100px;
+  height: 100px;
+  transition: all 1.2s ease-in-out;
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.form-img {
+  width: 120px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 1.5rem;
+}
+
+.count-SP {
+  width: 100px;
+}

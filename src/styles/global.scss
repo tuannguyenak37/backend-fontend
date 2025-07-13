@@ -1,0 +1,547 @@
+/* ======= Cấu hình cơ bản ======= */
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #fff5f7;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* ======= Header ======= */
+.header {
+  position: relative;
+  z-index: 1000;
+}
+
+.nav-link {
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #dc3545;
+  }
+}
+/* ======= Navbar ======= */
+.nav-link {
+  color: #444;
+  margin: 0 0.625rem; /* 10px */
+  text-decoration: none;
+}
+
+/* ======= Hero Section ======= */
+.hero {
+  background-color: #ffeef2;
+  padding: 2.5rem 1.25rem; /* 40px 20px */
+  text-align: center;
+}
+.hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  color: #d63384;
+}
+
+/* ======= Countdown Section ======= */
+.countdown {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #d63384;
+}
+
+.countdown-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.5rem;
+}
+
+.countdown-box div {
+  background: white;
+  padding: 0.625rem 0.9375rem;
+  border-radius: 0.5rem;
+  min-width: 3.75rem;
+  text-align: center;
+  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
+}
+
+.countdown-box strong {
+  font-size: 1.5rem;
+  color: #e53935;
+}
+
+.countdown-box small {
+  font-size: 0.75rem;
+  color: #555;
+}
+
+.countdown-item {
+  text-align: center;
+  font-size: 1.75rem;
+  padding: 0.625rem;
+  border-radius: 0.5rem;
+  background-color: #f3f4f6;
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timefont {
+  font-weight: bold;
+  font-size: 2rem;
+  color: rgb(255, 182, 193);
+}
+.timefont small {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* ======= Product & Testimonial ======= */
+.product-card img {
+  width: 100px;
+  height: auto;
+}
+
+.testimonial img {
+  width: 60px;
+  border-radius: 50%;
+}
+
+/* ======= Banner Background ======= */
+.backgroundMAIN {
+  background-image: url("../assets/img/nen.jpeg");
+  background-size: cover;
+  background-position: left;
+}
+
+.banner-hero {
+  background-color: #fff0f3;
+}
+
+/* ======= Carousel ======= */
+.carousel-inner {
+  height: 37.5rem; /* 600px */
+  overflow: hidden;
+}
+
+.carousel-inner img {
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  filter: brightness(0.95) saturate(1.1);
+}
+
+/* ======= Responsive Breakpoints ======= */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .countdown {
+    font-size: 1.2rem;
+  }
+
+  .carousel-inner {
+    height: 250px;
+  }
+
+  .countdown-item {
+    font-size: 1.25rem;
+  }
+
+  .product-card img {
+    width: 80px;
+  }
+
+  .testimonial img {
+    width: 50px;
+  }
+
+  .header {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+}
+
+.btn {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 0.625rem 1.25rem; /* 10px 20px */
+  border-radius: 1rem;
+  text-decoration: none;
+  border: none;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #b615b6;
+  }
+}
+.seller {
+  background-color: #fff;
+  padding: 1.25rem; /* 20px */
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  color: #dc3545;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+
+.fonr {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.5rem;
+  color: #dc3545;
+  font-weight: bold;
+  text-align: center;
+  user-select: none;
+}
+.roundeda {
+  border-radius: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+  }
+}
+
+// sao rơi
+.star {
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(0 0 6px gold) brightness(1.2);
+  z-index: 9999;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(-20vw) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.star::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(to left, white, transparent);
+  opacity: 0.6;
+}
+
+// sao rơi
+
+// footer
+.bg-w {
+  background-color: white;
+  border-radius: 2rem;
+}
+
+// chosemenu
+.menu-card {
+  background-color: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 1rem auto;
+  max-width: 20rem;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15);
+  }
+
+  .menu-img {
+    max-width: auto;
+    max-height: 20rem;
+  }
+
+  .menu-caption {
+    padding: 0.75rem 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
+    background-color: #fff;
+  }
+}
+
+.color {
+  font-family: "Montserrat", sans-serif;
+  background-color: #fff5f7;
+  color: #000;
+}
+.font-chose {
+  font-family: "playfair display", serif;
+  font-style: italic;
+
+  font-size: 3.5rem;
+  color: #dc3545;
+  font-weight: bold;
+  text-align: center;
+  user-select: none;
+}
+
+//
+
+.icon-shoping-cart {
+  border-radius: 10px;
+}
+
+.hide {
+  color: "transparent";
+  text-shadow: #5e4e50;
+}
+.letter {
+  font-family: "Dancing Script", cursive !important;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #ff758c;
+  font-weight: bold;
+}
+.boder-comstom {
+  border-color: #b615b6 !important;
+  border-style: solid !important;
+  border-width: 4px !important;
+  width: 70%;
+  margin: 1rem auto;
+  border-radius: 1.25rem;
+}
+
+.text-content-letter {
+  color: #b615b6;
+  font-size: 1.2rem;
+}
+.avatar-letter {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto;
+  user-select: none;
+}
+
+.avatar-letter img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%; /* bo tròn ảnh */
+  display: block;
+}
+.input-content-letter {
+  border: none;
+  border-bottom: 2px solid #e83e8c;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  padding: 8px 5px;
+  width: 100%;
+  margin-top: 5px;
+  font-family: "Dancing Script", cursive;
+  font-size: 1.2rem;
+}
+.input-content-letter:focus {
+  outline: none;
+  border-bottom: 2px solid #d81b60;
+  box-shadow: 0 4px 6px -4px rgba(216, 27, 96, 0.3);
+}
+.btn-letter {
+  background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+
+  &:hover {
+    background-color: #ff6f91;
+    transform: scale(1.05);
+  }
+}
+.sell {
+  font-size: 1.5rem;
+  border: 5px;
+}
+.txtsell {
+  font-size: 1.5rem;
+  color: #b615b6;
+  margin-top: 5px;
+}
+.img-p {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  cursor: pointer;
+}
+@keyframes drop {
+  0% {
+    transform: translateY(-200px);
+    opacity: 0;
+  }
+  80% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.drop {
+  animation: drop 0.8s ease-out forwards;
+}
+@keyframes slideOut {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-80px);
+    opacity: 0;
+  }
+}
+
+.slide-out {
+  animation: slideOut 0.5s ease forwards;
+  pointer-events: none; /* Ngăn click sau khi ẩn */
+}
+.img-wrapper {
+  position: absolute;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0;
+}
+
+.drop {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.slide-out {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.img-style {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 2px solid white;
+  transition: transform 0.3s ease;
+}
+
+.img-style:hover {
+  transform: scale(1.1);
+}
+
+.bg-radi {
+  border-radius: 100% 8% 0% 0% / 100% 48% 76% 22% !important;
+  background: linear-gradient(234deg, #ffefba 0%, #ffffff 36%);
+}
+
+.impact-footer {
+  background: linear-gradient(to right, #ffe3ec, #fcd5ce);
+  color: #4b2c3a;
+  font-family: 'Poppins', sans-serif;
+  padding: 50px 20px 20px;
+  position: relative;
+  border-top: 5px solid #e91e63;
+  box-shadow: 0 -2px 20px rgba(0,0,0,0.1);
+}
+
+.impact-footer-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.impact-left {
+  flex: 1 1 50%;
+  text-align: left;
+  padding: 20px;
+}
+
+.impact-left h2 {
+  font-size: 28px;
+  color: #b91c5a;
+  margin-bottom: 10px;
+}
+
+.impact-left p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.cta-btn {
+  display: inline-block;
+  background-color: #ff5c8a;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(255, 92, 138, 0.4);
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  background-color: #e91e63;
+  transform: scale(1.05);
+}
+
+.impact-right {
+  flex: 1 1 40%;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.column h4 {
+  color: #a8325c;
+  margin-bottom: 10px;
+}
+
+.column p, .column a {
+  font-size: 14px;
+  margin-bottom: 8px;
+  text-decoration: none;
+  color: #4b2c3a;
+}
+
+.socials a img {
+  width: 28px;
+  margin-right: 12px;
+  transition: transform 0.3s ease;
+}
+
+.socials a:hover img {
+  transform: scale(1.2);
+}
+
+.footer-note {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #6a3d4e;
+  border-top: 1px dashed #f7a5b7;
+  padding-top: 10px;
+}
+.uniform-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+}
