@@ -13,6 +13,7 @@ function Login() {
   const [validated, setValidated] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const navigate = useNavigate();
+  const [rememberMe, setRememberMe] = useState(false);
 
   const loginFormRef = useRef(null);
   const registerFormRef = useRef(null);
@@ -31,6 +32,13 @@ function Login() {
 
   useEffect(() => {
     document.body.classList.add("login-bg");
+
+    const savedUsername = localStorage.getItem("rememberedUsername");
+    if (savedUsername) {
+      setLoginUsername(savedUsername);
+      setRememberMe(true);
+    }
+
     return () => {
       document.body.classList.remove("login-bg");
     };
@@ -84,6 +92,11 @@ function Login() {
         }
         if (res.ok && data.user) {
           localStorage.setItem("user", JSON.stringify(data.user));
+          if (rememberMe) {
+            localStorage.setItem("rememberedUsername", login_username);
+          } else {
+            localStorage.removeItem("rememberedUsername");
+          }
         }
 
         setError(""); // Xóa lỗi cũ nếu có
@@ -214,6 +227,16 @@ function Login() {
                             />
                             <Form.Label>Password</Form.Label>
                           </div>
+                          <input
+                            type="checkbox"
+                            id="rememberMe"
+                            className="form-check-input m-2"
+                            checked={rememberMe}
+                            onChange={(e) => setRememberMe(e.target.checked)}
+                          />
+                          <label htmlFor="rememberMe" className="mt-2">
+                            Nhớ tài khoản
+                          </label>
                           <div className="text-danger mt-2">
                             {error && <p>{error}</p>}
                           </div>

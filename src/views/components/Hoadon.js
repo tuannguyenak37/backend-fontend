@@ -6,6 +6,7 @@ export default class HoaDonPage extends Component {
     super(props);
     this.state = {
       hoaDons: [],
+      hoaDon: {}, // chứa giamgia, ThanhTien
       chiTietHoaDon: [],
       selectedHoaDonId: null,
     };
@@ -20,7 +21,7 @@ export default class HoaDonPage extends Component {
       return;
     }
 
-    this.fetchHoaDon(userId); // ✅ luôn dùng userId
+    this.fetchHoaDon(userId);
   }
 
   fetchHoaDon = (userId) => {
@@ -44,8 +45,15 @@ export default class HoaDonPage extends Component {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
+          const { chiTiet } = data;
+          const { giamgia, ThanhTien } = chiTiet[0] || {};
+
           this.setState({
-            chiTietHoaDon: data.chiTiet,
+            hoaDon: {
+              giamgia: giamgia,
+              ThanhTien: ThanhTien,
+            },
+            chiTietHoaDon: chiTiet,
             selectedHoaDonId: id_HD,
           });
         } else {
@@ -58,13 +66,12 @@ export default class HoaDonPage extends Component {
   };
 
   render() {
-    const { hoaDons, chiTietHoaDon, selectedHoaDonId } = this.state;
+    const { hoaDons, chiTietHoaDon, selectedHoaDonId, hoaDon } = this.state;
 
     return (
       <div className="container">
         <Header />
 
-        <h1 className="text-center mt-5">"</h1>
         <h1 className="text-center mt-5">Danh sách hóa đơn</h1>
         <table className="table table-bordered mt-4">
           <thead>
@@ -74,6 +81,7 @@ export default class HoaDonPage extends Component {
               <th>Trạng Thái</th>
               <th>Mô Tả</th>
               <th>Tên Khách Hàng</th>
+              <th>Thành tiền</th>
               <th>Hành động</th>
             </tr>
           </thead>
@@ -82,10 +90,10 @@ export default class HoaDonPage extends Component {
               <tr key={hoaDon.id_HD}>
                 <td>{hoaDon.id_HD}</td>
                 <td>{new Date(hoaDon.ngayDat).toLocaleString("vi-VN")}</td>
-
                 <td>{hoaDon.TrangThai}</td>
                 <td>{hoaDon.mota}</td>
                 <td>{hoaDon.name_KH}</td>
+                <td>{hoaDon.ThanhTien.toLocaleString()} đ</td>
                 <td>
                   <button
                     className="btn btn-primary btn-sm"
@@ -99,6 +107,7 @@ export default class HoaDonPage extends Component {
           </tbody>
         </table>
 
+        {/* Chi tiết hóa đơn */}
         {selectedHoaDonId && (
           <div className="mt-5">
             <h3>Chi tiết hóa đơn: {selectedHoaDonId}</h3>
@@ -122,18 +131,21 @@ export default class HoaDonPage extends Component {
                 ))}
               </tbody>
             </table>
+
+            {/* Giảm giá và Thành tiền sau giảm */}
             {chiTietHoaDon.length > 0 && (
               <div className="text-end mt-2 fw-bold">
-                Tổng tiền hóa đơn:{" "}
-                {chiTietHoaDon
-                  .reduce((sum, item) => sum + item.tongTIEN, 0)
-                  .toLocaleString()}{" "}
-                đ
+                <p>Giảm giá: {hoaDon.giamgia || 0}%</p>
+                <p>
+                  Thành tiền sau giảm:{" "}
+                  {hoaDon.ThanhTien ? hoaDon.ThanhTien.toLocaleString() : 0} đ
+                </p>
               </div>
             )}
           </div>
         )}
 
+        {/* Trường hợp không có hóa đơn */}
         {hoaDons.length === 0 && (
           <div className="text-center mt-4">
             <p>Không có hóa đơn nào.</p>

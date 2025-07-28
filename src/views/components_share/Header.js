@@ -59,7 +59,7 @@ export default class Header extends Component {
             <Link to="/about" className="nav-link text-dark fw-semibold">
               Giới thiệu
             </Link>
-            <Link to="/contact" className="nav-link text-dark fw-semibold">
+            <Link to="/contactPage" className="nav-link text-dark fw-semibold">
               Liên hệ
             </Link>
           </nav>
@@ -93,9 +93,16 @@ export default class Header extends Component {
                     </button>
                     <Link
                       to="/HoaDonPage"
-                      className="btn btn-outline-danger btn-sm d-flex justify-content-center align-items-center w-100"
+                      className="btn btn-outline-danger btn-sm d-flex justify-content-center align-items-center w-100 mt-2"
                     >
                       Hóa đơn
+                    </Link>
+                    <Link
+                      to="/MyProfile"
+                      className="btn btn-outline-danger btn-sm d-flex justify-content-center align-items-center w-100 mt-2"
+                    >
+                      {" "}
+                      Thông tin{" "}
                     </Link>
                   </Dropdown.Menu>
                 </Dropdown>

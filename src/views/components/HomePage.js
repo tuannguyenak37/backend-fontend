@@ -3,7 +3,6 @@ import Countdown from "../components_share/Countdown";
 import Outstanding from "../components_share/Outstanding";
 import ChoseMenu from "../components_share/ChoseMenu";
 import Header from "../components_share/Header";
-import Letter from "../components_share/Letter";
 
 import { Link } from "react-router-dom"; // Sử dụng Link từ react-router-dom
 
@@ -97,9 +96,7 @@ const HomePage = () => {
         <section>
           <ChoseMenu />
         </section>
-        <div className="container">
-          <Letter />
-        </div>
+
         <div className="bg-radi">
           <RollingGallery />{" "}
           <footer>

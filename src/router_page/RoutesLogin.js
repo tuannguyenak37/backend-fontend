@@ -8,6 +8,10 @@ import Love from "../views/components_share/Love";
 import CartPage from "../views/components/CartPage";
 import About from "../views/components/About";
 import HoaDonPage from "../views/components/Hoadon";
+import ContactPage from "../views/components/ContacPage";
+import MyProfile from "../views/components/Myprofile";
+import Letter from "../views/components_share/Letter";
+
 const RoutesLogin = () => {
   const location = useLocation();
 
@@ -21,7 +25,9 @@ const RoutesLogin = () => {
         <Route path="/CartPage" element={<CartPage />} />
         <Route path="/About" element={<About />} />
         <Route path="/HoaDonPage" element={<HoaDonPage />} />
-        {/* Thêm các route khác nếu cần */}
+        <Route path="/ContactPage" element={<ContactPage />} />
+        <Route path="/MyProfile" element={<MyProfile />} />{" "}
+        <Route path="/Letter" element={<Letter />} />
       </Routes>
     </AnimatePresence>
   );

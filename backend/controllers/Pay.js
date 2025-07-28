@@ -1,8 +1,7 @@
 import pool from "../config/mysql.js";
 
 const Pay = async (req, res) => {
-  const { mota, id_KH, cartItems, userId } = req.body;
-  console.log(id_KH);
+  const { mota, id_KH, cartItems, userId, sellPercent, finalAmount } = req.body;
 
   if (!userId) {
     return res.status(400).json({ success: false, message: "Thiếu userId" });
@@ -25,8 +24,16 @@ const Pay = async (req, res) => {
 
     // 🗓️ 3. Tạo hóa đơn
     await conn.query(
-      "INSERT INTO HoaDon (id_HD, id_KH, ngayDat, TrangThai, mota) VALUES (?, ?, ?, ?, ?)",
-      [newIdHD, id_KH, new Date(), "Đã thanh toán", mota]
+      "INSERT INTO HoaDon (id_HD, id_KH, ngayDat, TrangThai, mota,giamgia,ThanhTien) VALUES (?, ?, ?, ?, ?,?,?)",
+      [
+        newIdHD,
+        id_KH,
+        new Date(),
+        "Đã thanh toán",
+        mota,
+        sellPercent,
+        finalAmount,
+      ]
     );
 
     // 🧾 4. Chi tiết hóa đơn
@@ -44,9 +51,8 @@ const Pay = async (req, res) => {
     console.log("📤 Dữ liệu thanh toán:", {
       id_HD: newIdHD,
       id_KH,
+      sellPercent,
     });
-    // 🏁 5. Trả về kết qu
-    console.log("✅ Thanh toán thành công:", newIdHD);
 
     return res.json({ success: true, id_HD: newIdHD });
   } catch (err) {

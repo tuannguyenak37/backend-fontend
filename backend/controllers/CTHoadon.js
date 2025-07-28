@@ -11,14 +11,18 @@ const CTHoaDon = async (req, res) => {
   try {
     const [results] = await conn.query(
       `SELECT 
-        CTHD.id_CTHD,
-        SP.name_SP,
-        SP.gia_SP,
-        CTHD.SOLUONG,
-        CTHD.tongTIEN
-       FROM CTHOADON CTHD
-       JOIN SANPHAM SP ON CTHD.id_SP = SP.id_SP
-       WHERE CTHD.id_HD = ?`,
+    CTHD.id_CTHD,
+    SP.name_SP,
+    SP.gia_SP,
+    CTHD.SOLUONG,
+    CTHD.tongTIEN,
+    HD.giamgia,
+    HD.ThanhTien
+FROM CTHOADON CTHD
+JOIN SANPHAM SP ON CTHD.id_SP = SP.id_SP
+JOIN HOADON HD ON CTHD.id_HD = HD.id_HD
+WHERE CTHD.id_HD = ?
+`,
       [id_HD]
     );
 

@@ -2,8 +2,17 @@ import React, { Component } from "react";
 import { getCart, saveCart } from "./Shopng_cart";
 import Header from "../components_share/Header";
 import { motion } from "framer-motion";
+// src/utils/withNavigation.js (hoặc nơi bạn muốn)
+import { useNavigate } from "react-router-dom";
 
-export default class CartPage extends Component {
+export function withNavigation(Component) {
+  return function WrappedComponent(props) {
+    const navigate = useNavigate();
+    return <Component {...props} navigate={navigate} />;
+  };
+}
+
+export class CartPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,6 +30,7 @@ export default class CartPage extends Component {
       sellCode: "",
       sellPercent: 0,
       discountApplied: false,
+      finalAmount: 0,
     };
   }
 
@@ -54,11 +64,21 @@ export default class CartPage extends Component {
     }
   }
   handleApplyDiscount = () => {
-    const { selectedCode, sellCode } = this.state;
+    const { selectedCode, sellCode, sellPercent } = this.state;
+
     if (selectedCode === sellCode) {
-      this.setState({ discountApplied: true });
+      const total = this.getTotalPrice();
+      const discounted = total - (total * sellPercent) / 100;
+
+      this.setState({
+        discountApplied: true,
+        finalAmount: discounted,
+      });
     } else {
-      this.setState({ discountApplied: false });
+      this.setState({
+        discountApplied: false,
+        finalAmount: 0,
+      });
     }
   };
 
@@ -80,10 +100,20 @@ export default class CartPage extends Component {
   };
 
   getTotalPrice = () => {
-    return this.state.cart.reduce(
-      (total, item) => total + item.gia_SP * item.quantity,
-      0
-    );
+    const discountApplied = this.state.discountApplied;
+    const sellPercent = this.state.sellPercent;
+    if (discountApplied === true) {
+      return this.state.cart.reduce(
+        (total, item) =>
+          total + item.gia_SP * item.quantity * ((100 - sellPercent) / 100),
+        0
+      );
+    } else {
+      return this.state.cart.reduce(
+        (total, item) => total + item.gia_SP * item.quantity,
+        0
+      );
+    }
   };
 
   handleAddCustomer = async () => {
@@ -141,6 +171,8 @@ export default class CartPage extends Component {
     const userId = user.id;
     const savedKH = JSON.parse(localStorage.getItem("savedKH") || "{}");
     const id_KH = savedKH.id_KH;
+    const sellPercent = this.state.sellPercent;
+    const finalAmount = this.state.finalAmount || this.getTotalPrice();
 
     if (!userId || userId.trim() === "") return alert("Bạn chưa đăng nhập!");
 
@@ -157,13 +189,23 @@ export default class CartPage extends Component {
       const res = await fetch("http://localhost:5000/api/Pay", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId, mota, id_KH, cartItems }),
+        body: JSON.stringify({
+          userId,
+          mota,
+          id_KH,
+          cartItems,
+          sellPercent,
+          finalAmount,
+        }),
       });
       const data = await res.json();
+      console.log(finalAmount);
       if (data.success) {
         alert(`✅ Đặt hàng thành công! Mã: ${data.id_HD}`);
         saveCart([]);
+        localStorage.removeItem("sell");
         this.setState({ cart: [], mota: "" });
+        this.props.navigate("/Letter");
       } else {
         alert("❌ " + data.message);
       }
@@ -418,9 +460,11 @@ export default class CartPage extends Component {
 
                   {this.state.discountApplied && (
                     <h4 className="text-success">
-                      ➖ Thàn tiền:{" "}
+                      ➖ Thành tiền:{" "}
                       <strong>
-                        {this.getDiscountedTotal().toLocaleString()}đ
+                        <strong>
+                          {this.state.finalAmount.toLocaleString()}đ
+                        </strong>
                       </strong>
                     </h4>
                   )}
@@ -440,3 +484,4 @@ export default class CartPage extends Component {
     );
   }
 }
+export default withNavigation(CartPage);

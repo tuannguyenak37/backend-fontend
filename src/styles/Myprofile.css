@@ -1,0 +1,236 @@
+.profile-page {
+  background: linear-gradient(329deg, #ffecd2 66%, #fcb69f 100%);
+  min-height: 100vh;
+  color: #333;
+  font-family: "Segoe UI", sans-serif;
+  padding: 2rem;
+}
+
+.profile-container {
+  max-width: 1000px;
+  margin: auto;
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #6b73ff, #000dff);
+  border-radius: 15px;
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.username {
+  color: #666;
+  font-size: 1rem;
+}
+
+.status {
+  color: green;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.profile-stats {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.stat-box {
+  flex: 1;
+  background: #f5f7fb;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: #d1d1d1 0px 0px 10px 0px;
+}
+
+.stat-box h3 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #280ef3;
+}
+
+.stat-box p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.info-section {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.info-box {
+  flex: 1;
+  background: #f0f2f5;
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+.info-box h4 {
+  margin-bottom: 1rem;
+}
+
+.dashboard {
+  margin-top: 2rem;
+}
+
+.dashboard h4 {
+  margin-bottom: 1rem;
+}
+
+.dashboard-stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.dashboard-stats div {
+  flex: 1;
+  background: #f5f5f5;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 15px;
+}
+.txt-ht {
+  color: #280ef3;
+}
+.txt-a {
+  color: #a200ff;
+  font-weight: bold;
+}
+.txt-9 {
+  color: #f3250e;
+  font-weight: bold;
+}
+
+.container-profile {
+  max-width: 500px;
+  background: #f8f9fd;
+  background: linear-gradient(
+    0deg,
+    rgb(255, 255, 255) 0%,
+    rgb(244, 247, 251) 100%
+  );
+  border-radius: 40px;
+  padding: 25px 35px;
+  border: 5px solid rgb(255, 255, 255);
+  box-shadow: rgba(133, 189, 215, 0.88) 0px 30px 30px -20px;
+  margin: 20px;
+}
+
+.heading-profile {
+  text-align: center;
+  font-weight: 900;
+  font-size: 30px;
+  color: rgb(16, 137, 211);
+}
+
+.form-profile {
+  margin-top: 20px;
+}
+
+.form-profile .input-profile {
+  width: 100%;
+  background: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 20px;
+  margin-top: 15px;
+  box-shadow: #cff0ff 0px 10px 10px -5px;
+  border-inline: 2px solid transparent;
+}
+
+.input-profile::placeholder {
+  color: rgb(170, 170, 170);
+}
+
+.input-profile:focus {
+  outline: none;
+  border-inline: 2px solid #12b1d1;
+}
+
+.form-profile .login-button-profile {
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  background: linear-gradient(
+    45deg,
+    rgb(16, 137, 211) 0%,
+    rgb(18, 177, 209) 100%
+  );
+  color: white;
+  padding-block: 15px;
+  margin: 20px auto;
+  border-radius: 20px;
+  box-shadow: rgba(133, 189, 215, 0.88) 0px 20px 10px -15px;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.login-button-profile:hover {
+  transform: scale(1.03);
+  box-shadow: rgba(133, 189, 215, 0.88) 0px 23px 10px -20px;
+}
+
+.login-button-profile:active {
+  transform: scale(0.95);
+  box-shadow: rgba(133, 189, 215, 0.88) 0px 15px 10px -10px;
+}
+
+.title-profile {
+  display: block;
+  text-align: center;
+  font-size: 10px;
+  color: rgb(170, 170, 170);
+}
+
+.social-button-profile {
+  background: linear-gradient(45deg, rgb(0, 0, 0) 0%, rgb(112, 112, 112) 100%);
+  border: 5px solid white;
+  padding: 5px;
+  border-radius: 50%;
+  width: 40px;
+  aspect-ratio: 1;
+  display: grid;
+  place-content: center;
+  box-shadow: rgba(133, 189, 215, 0.88) 0px 12px 10px -8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.social-button-profile .svg-profile {
+  fill: white;
+  margin: auto;
+}
+
+.social-button-profile:hover {
+  transform: scale(1.2);
+}
+
+.social-button-profile:active {
+  transform: scale(0.9);
+}
+
+.agreement-profile {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+}

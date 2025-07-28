@@ -10,7 +10,6 @@ import axios from "axios";
 import { addToCart } from "./Shopng_cart";
 import { motion, AnimatePresence } from "framer-motion";
 
-
 // Chia nhóm theo hàng
 function chunkArray(array, chunkSize) {
   const result = [];
@@ -98,7 +97,6 @@ export default class Goods extends Component {
           <Header />
         </header>
 
-        
         <div className="container" style={{ marginTop: "100px" }}></div>
 
         <Tabs
@@ -160,34 +158,46 @@ export default class Goods extends Component {
             eventKey="gifs"
             title={<img className="menu-card" src={gifs} alt="quà" />}
           >
-            {chunkArray(productGif, 3).map((group, rowIndex) => (
-              <Row key={rowIndex} className="text-center g-0 px a">
-                {group.map((product, colIndex) => (
-                  <Col key={colIndex} md={4}>
-                    <div className="card mt-5 mb-5 menu-card border-0">
-                      <img
-                        src={`/${product.img}`}
-                        className="goods-img"
-                        alt={product.name_SP || "gif"}
-                      />
-                      <div className="card-body text-center">
-                        <p className="goods-items">{product.name_SP}</p>
-                        <p className="goods-price">Giá: {product.gia_SP}đ</p>
-                        <p className="text">{product.mota_SP}</p>
-                        <button
-                          className="btn btn-danger"
-                          onClick={(e) =>
-                            this.handleAddToCartWithFly(product, e)
-                          }
-                        >
-                          Thêm vào giỏ hàng
-                        </button>
-                      </div>
-                    </div>
-                  </Col>
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={defaultTab}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.5 }}
+              >
+                {chunkArray(productGif, 3).map((group, rowIndex) => (
+                  <Row key={rowIndex} className="text-center g-0 px a">
+                    {group.map((product, colIndex) => (
+                      <Col key={colIndex} md={4}>
+                        <div className="card mt-5 mb-5 menu-card border-0">
+                          <img
+                            src={`/${product.img}`}
+                            className="goods-img"
+                            alt={product.name_SP || "gif"}
+                          />
+                          <div className="card-body text-center">
+                            <p className="goods-items">{product.name_SP}</p>
+                            <p className="goods-price">
+                              Giá: {product.gia_SP}đ
+                            </p>
+                            <p className="text">{product.mota_SP}</p>
+                            <button
+                              className="btn btn-danger"
+                              onClick={(e) =>
+                                this.handleAddToCartWithFly(product, e)
+                              }
+                            >
+                              Thêm vào giỏ hàng
+                            </button>
+                          </div>
+                        </div>
+                      </Col>
+                    ))}
+                  </Row>
                 ))}
-              </Row>
-            ))}
+              </motion.div>
+            </AnimatePresence>
           </Tab>
 
           {/* Tab combo */}
@@ -195,34 +205,46 @@ export default class Goods extends Component {
             eventKey="combo"
             title={<img className="menu-card" src={combo} alt="combo" />}
           >
-            {chunkArray(productCombo, 3).map((group, rowIndex) => (
-              <Row key={rowIndex} className="text-center g-0 px a">
-                {group.map((product, colIndex) => (
-                  <Col key={colIndex} md={4}>
-                    <div className="card mt-5 mb-5 menu-card border-0">
-                      <img
-                        src={`/${product.img}`}
-                        className="goods-img"
-                        alt={product.name_SP || "combo"}
-                      />
-                      <div className="card-body text-center">
-                        <p className="goods-items">{product.name_SP}</p>
-                        <p className="goods-price">Giá: {product.gia_SP}đ</p>
-                        <p className="text">{product.mota_SP}</p>
-                        <button
-                          className="btn btn-danger"
-                          onClick={(e) =>
-                            this.handleAddToCartWithFly(product, e)
-                          }
-                        >
-                          Thêm vào giỏ hàng
-                        </button>
-                      </div>
-                    </div>
-                  </Col>
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={defaultTab}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.5 }}
+              >
+                {chunkArray(productCombo, 3).map((group, rowIndex) => (
+                  <Row key={rowIndex} className="text-center g-0 px a">
+                    {group.map((product, colIndex) => (
+                      <Col key={colIndex} md={4}>
+                        <div className="card mt-5 mb-5 menu-card border-0">
+                          <img
+                            src={`/${product.img}`}
+                            className="goods-img"
+                            alt={product.name_SP || "combo"}
+                          />
+                          <div className="card-body text-center">
+                            <p className="goods-items">{product.name_SP}</p>
+                            <p className="goods-price">
+                              Giá: {product.gia_SP}đ
+                            </p>
+                            <p className="text">{product.mota_SP}</p>
+                            <button
+                              className="btn btn-danger"
+                              onClick={(e) =>
+                                this.handleAddToCartWithFly(product, e)
+                              }
+                            >
+                              Thêm vào giỏ hàng
+                            </button>
+                          </div>
+                        </div>
+                      </Col>
+                    ))}
+                  </Row>
                 ))}
-              </Row>
-            ))}
+              </motion.div>
+            </AnimatePresence>
           </Tab>
         </Tabs>
 

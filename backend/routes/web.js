@@ -5,6 +5,8 @@ import Pay from "../controllers/Pay.js";
 import KHlist from "../controllers/KH.js";
 import HoaDon from "../controllers/HoaDon.js";
 import CTHoaDon from "../controllers/CTHoadon.js"; // Import CTHoaDon controller
+import MyProfilelist from "../controllers/Myprofile.js";
+
 const router = express.Router();
 
 // Định nghĩa các route cho người dùng
@@ -18,4 +20,7 @@ router.post("/KH", KHlist.KH);
 router.get("/user/:userId", KHlist.getKhachHang);
 router.get("/HoaDon", HoaDon);
 router.get("/CTHoaDon", CTHoaDon);
+router.get("/MyProfile", MyProfilelist.MyProfile);
+router.put("/updateProfile", MyProfilelist.updateProfile);
+router.put("/updatePassword", MyProfilelist.updatePassword);
 export default router;

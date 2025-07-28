@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/love.scss";
 import { Link } from "react-router-dom";
 import Sell from "./Sell";
@@ -8,6 +8,9 @@ export default function Love() {
   const [hiddenHearts, setHiddenHearts] = useState([]);
   const [correctCount, setCorrectCount] = useState(0);
   const [win, setWin] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(30); // thời gian đếm ngược
+  const [gameOver, setGameOver] = useState(false); // kết thúc khi hết giờ
+  const [timerStarted, setTimerStarted] = useState(false); // bắt đầu đếm khi người chơi click
 
   const heartShape = [
     [0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0],
@@ -22,9 +25,26 @@ export default function Love() {
     [0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
   ];
+  useEffect(() => {
+    let timer;
+    if (timerStarted && !gameOver && timeLeft > 0) {
+      timer = setInterval(() => {
+        setTimeLeft((prevTime) => {
+          if (prevTime <= 1) {
+            clearInterval(timer);
+            setGameOver(true);
+          }
+          return prevTime - 1;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(timer);
+  }, [timerStarted, timeLeft, gameOver]);
 
   const handleClick = (index) => {
-    if (hiddenHearts.includes(index)) return;
+    if (hiddenHearts.includes(index) || gameOver) return;
+
+    if (!timerStarted) setTimerStarted(true);
 
     const flat = heartShape.flat();
     const isHeart = flat[index] === 1;
@@ -36,6 +56,7 @@ export default function Love() {
         const newCount = prevCount + 1;
         if (newCount >= 20) {
           setWin(true);
+          setGameOver(true); // thắng thì kết thúc luôn
         }
         return newCount;
       });
@@ -44,9 +65,16 @@ export default function Love() {
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
-      {!win ? (
+      {!gameOver ? (
         <Row>
           <Col md={4} className="container mt-4">
+            <Row className="text-center">
+              <Col md={12}>
+                <div className="text-center mb-3">
+                  <h4>⏳ Còn lại: {timeLeft} giây</h4>
+                </div>
+              </Col>
+            </Row>
             <row className="container ">
               <Col md={4}>
                 <img
@@ -81,17 +109,22 @@ export default function Love() {
         </Row>
       ) : (
         <div>
-          <h1 className="text-center">You win! {correctCount} điểm </h1>
+          <h1 className="text-center">
+            {win
+              ? `You win! ${correctCount} điểm`
+              : `⏱️ Hết giờ! Bạn được ${correctCount} điểm`}
+          </h1>
           <div className="back-love d-flex align-content-center justify-content-center">
             <Link to="/" className="text-decoration-none text">
               Trở về
             </Link>
           </div>
-          <div>
-            {" "}
-            <h1 className=" mt-3"> chúc mừng bạn nhận được mã giảm giá</h1>{" "}
-          </div>
-          <Sell />
+          {win && (
+            <div>
+              <h1 className="mt-3">Chúc mừng bạn nhận được mã giảm giá</h1>
+              <Sell />
+            </div>
+          )}
         </div>
       )}
     </div>
