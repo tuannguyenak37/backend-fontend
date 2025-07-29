@@ -1,16 +1,17 @@
-// config/mysql.js
 import mysql from "mysql2/promise";
+import dotenv from "dotenv";
+
+dotenv.config(); // Load biến môi trường từ .env
 
 const pool = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "shop",
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   waitForConnections: true,
   connectionLimit: 10,
-  queueLimit: 0,
 });
 
-console.log("✅ Kết nối MySQL hehe đã sẵn sàng!");
-
+console.log("✅ Đã kết nối MySQL online thành công!");
 export default pool;
