@@ -24,7 +24,8 @@ const ChatGPT = () => {
         "https://backendflower-9t22.onrender.com/api/ChatBot",
         { text: input }
       );
-      const botReply = res.data.reply || "Xin lỗi, mình không hiểu ý bạn 🥺";
+      const botReply = res.data.message || "Xin lỗi, mình không hiểu ý bạn 🥺";
+      console.log("📥 Bot trả lời:", botReply);
       setMessages([...newMessages, { from: "bot", text: botReply }]);
     } catch (error) {
       setMessages([
