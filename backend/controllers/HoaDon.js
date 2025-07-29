@@ -11,7 +11,6 @@ FROM hoadon
 JOIN khachhang ON hoadon.id_KH = khachhang.id_KH
 WHERE khachhang.id_KH = ?
 ORDER BY hoadon.ngayDat DESC;
-
 `,
       [userId]
     );
