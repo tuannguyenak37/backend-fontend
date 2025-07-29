@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "../components_share/Header";
 
+
 export default class HoaDonPage extends Component {
   constructor(props) {
     super(props);
@@ -72,7 +73,7 @@ export default class HoaDonPage extends Component {
       <div className="container">
         <Header />
 
-        <h1 className="text-center mt-5">Danh sách hóa đơn</h1>
+        <h1 className="text-center mt-5 cca">Danh sách hóa đơn</h1>
         <table className="table table-bordered mt-4">
           <thead>
             <tr>

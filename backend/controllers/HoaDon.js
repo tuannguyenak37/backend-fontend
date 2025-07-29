@@ -9,7 +9,7 @@ const HoaDon = async (req, res) => {
       `SELECT hoadon.*, khachhang.name_KH
 FROM hoadon
 JOIN khachhang ON hoadon.id_KH = khachhang.id_KH
-WHERE khachhang.id_KH = ?
+WHERE khachhang.id = ?
 ORDER BY hoadon.ngayDat DESC;
 `,
       [userId]
