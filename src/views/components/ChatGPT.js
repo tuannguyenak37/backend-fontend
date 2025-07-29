@@ -21,7 +21,7 @@ const ChatGPT = () => {
 
     try {
       const res = await axios.post(
-        "https://backendflower-9t22.onrender.com/api/chat",
+        "https://backendflower-9t22.onrender.com/api/ChatBot",
         { message: input }
       );
       const botReply = res.data.reply || "Xin lỗi, mình không hiểu ý bạn 🥺";
