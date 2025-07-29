@@ -22,7 +22,7 @@ const ChatGPT = () => {
     try {
       const res = await axios.post(
         "https://backendflower-9t22.onrender.com/api/ChatBot",
-        { message: input }
+        { text: input }
       );
       const botReply = res.data.reply || "Xin lỗi, mình không hiểu ý bạn 🥺";
       setMessages([...newMessages, { from: "bot", text: botReply }]);
