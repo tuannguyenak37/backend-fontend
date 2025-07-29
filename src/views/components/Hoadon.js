@@ -25,7 +25,7 @@ export default class HoaDonPage extends Component {
   }
 
   fetchHoaDon = (userId) => {
-    fetch(`http://localhost:5000/api/HoaDon?userId=${userId}`)
+    fetch(`https://backendflower-9t22.onrender.com/api/HoaDon?userId=${userId}`)
       .then((response) => {
         if (!response.ok) throw new Error("Lỗi khi lấy dữ liệu hóa đơn");
         return response.json();
@@ -41,7 +41,7 @@ export default class HoaDonPage extends Component {
   };
 
   xemChiTiet = (id_HD) => {
-    fetch("http://localhost:5000/api/CTHoaDon?id_HD=" + id_HD)
+    fetch("https://backendflower-9t22.onrender.com/api/CTHoaDon?id_HD=" + id_HD)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

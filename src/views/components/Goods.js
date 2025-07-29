@@ -32,19 +32,19 @@ export default class Goods extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/productList")
+      .get("https://backendflower-9t22.onrender.com/api/productList")
       .then((res) => this.setState({ products: res.data.data }))
       .catch((error) => console.error("Lỗi không nhận được sản phẩm:", error));
 
     axios
-      .get("http://localhost:5000/api/ProductListGif")
+      .get("https://backendflower-9t22.onrender.com/api/ProductListGif")
       .then((res) => this.setState({ productGif: res.data.data }))
       .catch((error) =>
         console.error("Lỗi không nhận được sản phẩm gif:", error)
       );
 
     axios
-      .get("http://localhost:5000/api/ProductListCombo")
+      .get("https://backendflower-9t22.onrender.com/api/ProductListCombo")
       .then((res) => this.setState({ productCombo: res.data.data }))
       .catch((error) =>
         console.error("Lỗi không nhận được sản phẩm combo:", error)

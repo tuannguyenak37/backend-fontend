@@ -24,7 +24,7 @@ const Pay = async (req, res) => {
 
     // 🗓️ 3. Tạo hóa đơn
     await conn.query(
-      "INSERT INTO HoaDon (id_HD, id_KH, ngayDat, TrangThai, mota,giamgia,ThanhTien) VALUES (?, ?, ?, ?, ?,?,?)",
+      "INSERT INTO hoadon (id_HD, id_KH, ngayDat, TrangThai, mota,giamgia,ThanhTien) VALUES (?, ?, ?, ?, ?,?,?)",
       [
         newIdHD,
         id_KH,
@@ -43,7 +43,7 @@ const Pay = async (req, res) => {
       )}`; // tạo mã mỗi lần lặp
 
       await conn.query(
-        `INSERT INTO ctHoaDon (id_CTHD, id_HD, id_SP, SOlUONG, tongTIEN)
+        `INSERT INTO cthoadon (id_CTHD, id_HD, id_SP, SOlUONG, tongTIEN)
          VALUES (?, ?, ?, ?, ?)`,
         [id_CTHD, newIdHD, item.id_SP, item.soLuong, item.soLuong * item.donGia]
       );

@@ -76,7 +76,7 @@ function Login() {
 
     try {
       if (isLogin) {
-        const res = await fetch("http://localhost:5000/api/login", {
+        const res = await fetch("https://backendflower-9t22.onrender.com/api/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -106,7 +106,7 @@ function Login() {
           2,
           "0"
         )}`;
-        const res = await fetch("http://localhost:5000/api/createUser", {
+        const res = await fetch("https://backendflower-9t22.onrender.com/api/createUser", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

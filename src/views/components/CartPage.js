@@ -52,7 +52,7 @@ export class CartPage extends Component {
         this.setState({ khachHang: savedKH });
       } else if (userId) {
         // Nếu chưa từng lưu thủ công => fetch từ server
-        fetch(`http://localhost:5000/api/user/${userId}`)
+        fetch(`https://backendflower-9t22.onrender.com/api/user/${userId}`)
           .then((res) => res.json())
           .then((data) => {
             if (data.success && data.khachHang) {
@@ -131,7 +131,7 @@ export class CartPage extends Component {
     if (!userId) return alert("⚠️ Bạn chưa đăng nhập!");
 
     try {
-      const res = await fetch("http://localhost:5000/api/KH", {
+      const res = await fetch("https://backendflower-9t22.onrender.com/api/KH", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -186,7 +186,7 @@ export class CartPage extends Component {
     }));
 
     try {
-      const res = await fetch("http://localhost:5000/api/Pay", {
+      const res = await fetch("https://backendflower-9t22.onrender.com/api/Pay", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

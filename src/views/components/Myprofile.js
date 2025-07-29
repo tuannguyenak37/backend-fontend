@@ -51,7 +51,7 @@ export default class MyProfile extends Component {
 
   fetchProfile = (userId) => {
     axios
-      .get(`http://localhost:5000/api/MyProfile?userId=${userId}`)
+      .get(`https://backendflower-9t22.onrender.com/api/MyProfile?userId=${userId}`)
       .then((res) => {
         if (res.data.success) {
           this.setState({
@@ -98,7 +98,7 @@ export default class MyProfile extends Component {
     }
 
     axios
-      .put(`http://localhost:5000/api/updateProfile?userID=${userId}`, {
+      .put(`https://backendflower-9t22.onrender.com/api/updateProfile?userID=${userId}`, {
         userId,
         ...formData,
       })
@@ -129,7 +129,7 @@ export default class MyProfile extends Component {
       return;
     }
     axios
-      .put(`http://localhost:5000/api/updatePassword?userID=${userId}`, {
+      .put(`https://backendflower-9t22.onrender.com/api/updatePassword?userID=${userId}`, {
         userId,
         ...formDataPassword,
       })

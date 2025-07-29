@@ -6,11 +6,12 @@ const HoaDon = async (req, res) => {
 
   try {
     const [rows] = await conn.execute(
-      `SELECT HOADON.*, KHACHHANG.name_KH
-FROM HOADON
-JOIN KHACHHANG ON HOADON.id_KH = KHACHHANG.id_KH
-WHERE KHACHHANG.id = ?
-ORDER BY HOADON.ngayDat DESC;
+      `SELECT hoadon.*, khachhang.name_KH
+FROM hoadon
+JOIN khachhang ON hoadon.id_KH = khachhang.id_KH
+WHERE khachhang.id_KH = ?
+ORDER BY hoadon.ngayDat DESC;
+
 `,
       [userId]
     );

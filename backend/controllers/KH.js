@@ -24,7 +24,7 @@ const KH = async (req, res) => {
     
 
     await conn.execute(
-      `INSERT INTO KHACHHANG (id_KH, name_KH, dt_KH, diachi_KH, motaDiaCHi_KH, email_KH, id)
+      `INSERT INTO khachhang (id_KH, name_KH, dt_KH, diachi_KH, motaDiaCHi_KH, email_KH, id)
      VALUES (?, ?, ?, ?, ?, ?, ?)`,
       [newIdKH, name_KH, dt_KH, diachi_KH, motaDiaCHi_KH, email_KH, userId]
     );
