@@ -7,7 +7,7 @@ import Header from "../components_share/Header";
 import { Link } from "react-router-dom"; // Sử dụng Link từ react-router-dom
 
 import "../../styles/global.scss"; // Đảm bảo đường dẫn đúng đến file CSS
-
+import ChatGPT from "./ChatGPT";
 import hoa1 from "../../assets/img/hoa1.avif";
 import hoa2 from "../../assets/img/hoa2.avif";
 import hoa3 from "../../assets/img/hoa3.avif";
@@ -22,6 +22,7 @@ const HomePage = () => {
       <header>
         <Header />
       </header>
+      <ChatGPT />
 
       <motion.div
         initial={{ x: 100, opacity: 0 }} // bắt đầu mờ

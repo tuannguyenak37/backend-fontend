@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Header from "../components_share/Header";
-
-
+import ChiTieuChart from "../components_share/ChiTieuChart";
+const user = JSON.parse(localStorage.getItem("user") || "{}");
+const userId = user.id;
+console.log("User ID:", userId);
 export default class HoaDonPage extends Component {
   constructor(props) {
     super(props);
@@ -72,6 +74,9 @@ export default class HoaDonPage extends Component {
     return (
       <div className="container">
         <Header />
+        <div className="p-4 mt-5">
+          <ChiTieuChart userId={userId} />
+        </div>
 
         <h1 className="text-center mt-5 cca">Danh sách hóa đơn</h1>
         <table className="table table-bordered mt-4">

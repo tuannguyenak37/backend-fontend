@@ -6,7 +6,8 @@ import KHlist from "../controllers/KH.js";
 import HoaDon from "../controllers/HoaDon.js";
 import CTHoaDon from "../controllers/CTHoadon.js"; // Import CTHoaDon controller
 import MyProfilelist from "../controllers/Myprofile.js";
-
+import ThongKe from "../controllers/ThongKe.js";
+import ChatBot from "../controllers/ChatBot.js";
 const router = express.Router();
 
 // Định nghĩa các route cho người dùng
@@ -23,4 +24,7 @@ router.get("/CTHoaDon", CTHoaDon);
 router.get("/MyProfile", MyProfilelist.MyProfile);
 router.put("/updateProfile", MyProfilelist.updateProfile);
 router.put("/updatePassword", MyProfilelist.updatePassword);
+router.get("/ThongKe/:userId", ThongKe);
+router.post("/ChatBot", ChatBot); // ✅ Chat với GPT
+
 export default router;
