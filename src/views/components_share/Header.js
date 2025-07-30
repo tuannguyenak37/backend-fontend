@@ -112,7 +112,7 @@ export default class Header extends Component {
                 <Link to="/login" className="nav-link text-dark fw-semibold">
                   Đăng nhập
                 </Link>
-                <Link to="/register" className="nav-link text-dark fw-semibold">
+                <Link to="/login" className="nav-link text-dark fw-semibold">
                   Đăng ký
                 </Link>
               </>
